@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+//@CrossOrigin
 @RequiredArgsConstructor
 public class AuthController {
 
