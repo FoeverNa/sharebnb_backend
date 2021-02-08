@@ -97,7 +97,7 @@ public class AuthService {
                 .clientId(clientId)
                 .clientSecret(clientSecret)
                 .code(authCode)
-                .redirectUri("http://localhost:8080/api/login/google")
+                .redirectUri("http://ec2-13-125-206-158.ap-northeast-2.compute.amazonaws.com/api/login/google")
                 .grantType("authorization_code").build();
         System.out.println(authCode);
         //JSON 파싱을 위한 기본값 세팅
