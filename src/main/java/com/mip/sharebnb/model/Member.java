@@ -1,13 +1,14 @@
 package com.mip.sharebnb.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,9 @@ import java.util.List;
 @Data
 @Entity
 @NoArgsConstructor
-//@Where(clause = "isDeleted = false")
+@AllArgsConstructor
+@Builder
+@Where(clause = "is_Deleted = false")
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,24 +35,28 @@ public class Member {
     private String password;
 
     @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
     private String contact;
 
     @Column(nullable = false)
     private LocalDate birthDate;
 
+    @ColumnDefault("false")
     private boolean isDeleted;
 
     @Enumerated(EnumType.STRING)
     private MemberRole role;
 
-    private Long socialId;
+    @ColumnDefault("false")
+    private boolean isSocialMember;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "member")
     private List<Review> reviews;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private List<Reservation> reservations;
-
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "member")
     private List<Bookmark> bookmarks;
 }
