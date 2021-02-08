@@ -23,6 +23,7 @@ logging:
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
+
 server:
   error:
     include-exception: true
