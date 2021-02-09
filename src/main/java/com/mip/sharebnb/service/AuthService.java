@@ -35,7 +35,7 @@ public class AuthService {
     private final MemberService memberService;
 
     final static String GOOGLE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/token";
-    final static String GOOGLE_REDIRECT_URL = "http://http://13.124.101.93/api/login/google";
+    final static String GOOGLE_REDIRECT_URL = "http://localhost:3000/redirect";
 
     @Value("${google.client_id}")
     String clientId;
