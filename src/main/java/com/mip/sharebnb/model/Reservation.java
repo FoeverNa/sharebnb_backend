@@ -6,15 +6,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
 @Data
 @Entity
 @NoArgsConstructor
@@ -38,6 +46,9 @@ public class Reservation {
 
     private boolean isCanceled;
 
+    @ColumnDefault(value = "false")
+    private Boolean isWrittenReview;
+
     @CreationTimestamp
     private LocalDate paymentDate; // 결제일
 
@@ -46,17 +57,15 @@ public class Reservation {
     @ToString.Exclude
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @ToString.Exclude
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ACCOMMODATION_ID")
     private Accommodation accommodation;
 
     @ToString.Exclude
     @JsonIgnore
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
     private List<BookedDate> bookedDates = new ArrayList<>();
 }
