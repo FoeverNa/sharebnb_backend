@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  S3_BUCKET_NAME: sharebnb-deploy
+  S3_BUCKET_NAME: sharebnb-bucket
   PROJECT_NAME: sharebnb-clone
 
 jobs:
