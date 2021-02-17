@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Transactional
 @SpringBootTest(properties = "spring.config.location="
         + "classpath:test.yml")
