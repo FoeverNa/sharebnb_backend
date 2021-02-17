@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -27,16 +27,16 @@ public class AuthController {
     private final BookmarkService bookmarkService;
 
     @PostMapping("/login")
-    public ResponseEntity<List<BookmarkDto>> login(@Valid @RequestBody LoginDto loginDto) {
+    public ResponseEntity<TokenDto> login(@Valid @RequestBody LoginDto loginDto) {
 
         String jwt = authService.login(loginDto);
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, JwtFilter.HEADER_PREFIX + jwt);
 
-        List<BookmarkDto> bookmarks = bookmarkService.findBookmarksByMemberEmail(loginDto.getEmail());
+//        List<BookmarkDto> bookmarks = bookmarkService.findBookmarksByMemberEmail(loginDto.getEmail());
 
-        return new ResponseEntity<>(bookmarks, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(new TokenDto(jwt), httpHeaders, HttpStatus.OK);
     }
 
     @GetMapping("login/google")
