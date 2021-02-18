@@ -53,6 +53,19 @@ Content-Type: application/json
   "contact":"01008551213"
 }
 
+### 회원가입 테스트 - 서버
+
+POST http://3.34.122.155/api/member
+Content-Type: application/json
+
+{
+  "email":"member1@mail.com",
+  "password":"member33!@",
+  "name":"한글",
+  "birthDate": "2002-02-10",
+  "contact":"01008551213"
+}
+
 ### 회원정보찾기 테스트
 
 GET http://localhost:8080/api/member/2
