@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-//@CrossOrigin
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
