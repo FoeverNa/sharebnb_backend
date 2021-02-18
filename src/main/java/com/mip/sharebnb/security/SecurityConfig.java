@@ -47,14 +47,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .anyRequest().authenticated()
 
-                .and()
-                .cors()
+//                .and()
+//                .cors()
 
                 .and()
                 .apply(new JwtSecurityConfig(tokenProvider));
     }
 
-    @Bean
+//    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // - (3)
