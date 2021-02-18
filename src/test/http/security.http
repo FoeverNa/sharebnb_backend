@@ -25,8 +25,8 @@ POST http://3.34.122.155/api/login
 Content-Type: application/json
 
 {
-  "email":"test123@gmail.com",
-  "password":"12345678a!"
+  "email":"member@mail.com",
+  "password":"member33!@"
 }
 
 
