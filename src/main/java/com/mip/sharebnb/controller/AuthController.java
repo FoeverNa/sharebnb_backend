@@ -17,14 +17,13 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class AuthController {
 
     private final AuthService authService;
-    private final BookmarkService bookmarkService;
 
     @PostMapping("/login")
     public ResponseEntity<TokenDto> login(@Valid @RequestBody LoginDto loginDto) {
@@ -34,12 +33,10 @@ public class AuthController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, JwtFilter.HEADER_PREFIX + jwt);
 
-//        List<BookmarkDto> bookmarks = bookmarkService.findBookmarksByMemberEmail(loginDto.getEmail());
-
         return new ResponseEntity<>(new TokenDto(jwt), httpHeaders, HttpStatus.OK);
     }
 
-    @GetMapping("login/google")
+    @GetMapping("/login/google")
     public ResponseEntity<Map<String, String>> googleLogin(@RequestParam(value = "code") String authCode) throws JsonProcessingException {
 
         Map<String, String> map;
@@ -55,7 +52,7 @@ public class AuthController {
         }
     }
 
-    @PostMapping ("login/google")
+    @PostMapping ("/login/google")
     public ResponseEntity<TokenDto> signupBeforeGoogleLogin(@Valid @RequestBody GoogleMemberDto memberDto) {
 
         String token = authService.signupBeforeGoogleLogin(memberDto);
@@ -63,10 +60,9 @@ public class AuthController {
         return ResponseEntity.ok(new TokenDto(token));
     }
 
-    @GetMapping("logout")
+    @GetMapping("/logout")
     @PreAuthorize("authenticated")
     public ResponseEntity<String> logout(HttpServletRequest request) {
-        authService.isInTheInvalidTokenList(request);
         authService.logout(request);
 
         return new ResponseEntity<>("로그아웃 되었습니다", HttpStatus.OK);
