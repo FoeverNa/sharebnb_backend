@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Map;
 
-@CrossOrigin(exposedHeaders = "Authorization")
+//@CrossOrigin(exposedHeaders = "Authorization")
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
