@@ -47,14 +47,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .anyRequest().authenticated()
 
-//                .and()
-//                .cors()
+                .and()
+                .cors()
 
                 .and()
                 .apply(new JwtSecurityConfig(tokenProvider));
     }
 
-//    @Bean
+    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(ImmutableList.of("*"));
