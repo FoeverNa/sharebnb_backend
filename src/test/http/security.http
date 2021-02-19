@@ -33,11 +33,11 @@ Content-Type: application/json
 
 ### 로그아웃 테스트
 GET http://localhost:8080/api/logout
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNTgwMDY1fQ.q6zut4omnOUtOm7RYMZOcReD_wB8ULG7LEvPxARCo6wiqJvZhgm3rWy37os-lUaTWr4O0LIeRJ9stefYXe9Gwg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNjcxOTQ0fQ.m7UHeLgDIhOV9zdgI_bpCeeZEykxKct19TIWa3K8TfnpPqTIH86IgVdLnByNa2vM1keszTtdfMq3MeqQYWfLlg
 
 ### 로그아웃 테스트 - 서버
 GET http://3.34.122.155/api/logout
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MTIzQGdtYWlsLmNvbSIsImF1dGgiOiJST0xFX01FTUJFUiIsIm1lbWJlcklkIjoxLCJleHAiOjE2MTM1MzM0MDZ9.XmI9Vmfvc4FnH3Jv0pHgdZo6EG5d3ZPWpczWILksXTmmMjBmz8jSpI2UVcNQqWSXEkD_-17AnFc_yj-IqP-sww
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNjcxOTQ0fQ.m7UHeLgDIhOV9zdgI_bpCeeZEykxKct19TIWa3K8TfnpPqTIH86IgVdLnByNa2vM1keszTtdfMq3MeqQYWfLlg
 
 ### 회원가입 테스트
 
@@ -69,12 +69,12 @@ Content-Type: application/json
 ### 회원정보찾기 테스트
 
 GET http://localhost:8080/api/member/2
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNTgwMDY1fQ.q6zut4omnOUtOm7RYMZOcReD_wB8ULG7LEvPxARCo6wiqJvZhgm3rWy37os-lUaTWr4O0LIeRJ9stefYXe9Gwg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNjcxOTk1fQ.USume4E7CrtTZ9ZJEJ0WLZPlLzmjrcQF2s0a9fZyaZi_WBLUSFxOQdN2F7TbLqWj1Icv6f0_NuFWLMzUuvJZtg
 
 ### 회원정보찾기 테스트 -서버
 
 GET http://3.34.122.155/api/member/2
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNjUwOTM0fQ.gvYgo-6JCQNF9c6_NIb-rqINVu2sp4ntu6VMmKjsR0cIkl_TJEc29-vzCkj6HWL358ZSejw_zN7_a7YiYwqTXA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNjcxOTk1fQ.USume4E7CrtTZ9ZJEJ0WLZPlLzmjrcQF2s0a9fZyaZi_WBLUSFxOQdN2F7TbLqWj1Icv6f0_NuFWLMzUuvJZtg
 
 
 ### 회원정보수정 : 메일주소
@@ -129,3 +129,5 @@ Content-Type: application/json
   "contact":"010-9908-5511"
 }
 
+### 구글로그인
+GET http://3.34.122.155/api/login/google?code=4%2F0AY0e-g4-Yd4BWQqaWF9WlGVm8fmCAfvxh32f9yxeDlP9pakQZSr2Yn_nxzzLnVQX-lYKYQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.file&authuser=0&prompt=none
