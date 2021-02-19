@@ -120,8 +120,8 @@ POST http://3.34.122.155/api/login/google
 Content-Type: application/json
 
 {
-  "email":"fovena1@gmail.com",
-  "socialId":"45789154879513215487",
+  "email":"gg2922914@gmail.com",
+  "socialId":"116185624726222825285",
   "name":"한글",
   "birthDate": "2020-02-03",
   "contact":"01099085511"
