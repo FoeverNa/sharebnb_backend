@@ -23,7 +23,7 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
 
     public Member signup(MemberDto memberDto) {
-        checkDuplicateEmail(memberDto);
+        checkDuplicateEmail(memberDto.getEmail());
 
         Member member = Member.builder()
                 .email(memberDto.getEmail())
@@ -38,6 +38,8 @@ public class MemberService {
     }
 
     public Member signupGoogleMember(GoogleMemberDto memberDto) {
+        checkDuplicateEmail(memberDto.getEmail());
+
 
         Member member = Member.builder()
                 .email(memberDto.getEmail())
@@ -65,7 +67,7 @@ public class MemberService {
                 .orElseThrow(() -> new DataNotFoundException("수정할 멤버가 존재하지 않습니다"));
 
         if (memberDto.getEmail() != null) {
-            checkDuplicateEmail(memberDto);
+            checkDuplicateEmail(memberDto.getEmail());
             member.setEmail(memberDto.getEmail());
         } else if (memberDto.getName() != null) {
             member.setName(memberDto.getName());
@@ -92,8 +94,8 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    private void checkDuplicateEmail(MemberDto memberDto) {
-        if (memberRepository.findByEmail(memberDto.getEmail()).orElse(null) != null) {
+    private void checkDuplicateEmail(String email) {
+        if (memberRepository.findByEmail(email).orElse(null) != null) {
             throw new DuplicateValueExeption("이미 가입되어 있는 유저입니다.");
         }
     }
