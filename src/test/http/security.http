@@ -73,8 +73,8 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXIxQG1haWwuY29tIiwiY
 
 ### 회원정보찾기 테스트 -서버
 
-GET http://3.34.122.155/api/member/2
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNjcxOTk1fQ.USume4E7CrtTZ9ZJEJ0WLZPlLzmjrcQF2s0a9fZyaZi_WBLUSFxOQdN2F7TbLqWj1Icv6f0_NuFWLMzUuvJZtg
+GET http://3.34.122.155/api/member
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXIxQG1haWwuY29tIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwibWVtYmVySWQiOjExLCJleHAiOjE2MTM4NzIwNTd9.67Z22xR4sRStCRzm28iELPxneT4jpwLNzHCtoJGWdqlE8Fsjdc3lUEh9HXORCAqDBHy-ekhj1bpYOEpRHQFJXg
 
 
 ### 회원정보수정 : 메일주소
