@@ -59,7 +59,7 @@ POST http://3.34.122.155/api/member
 Content-Type: application/json
 
 {
-  "email":"member1@mail.com",
+  "email":"member2@mail.com",
   "password":"member33!@",
   "name":"한글",
   "birthDate": "2002-02-10",
@@ -69,7 +69,7 @@ Content-Type: application/json
 ### 회원정보찾기 테스트
 
 GET http://localhost:8080/api/member
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXIxQG1haWwuY29tIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwibWVtYmVySWQiOjExLCJleHAiOjE2MTM4NzIwNTd9.67Z22xR4sRStCRzm28iELPxneT4jpwLNzHCtoJGWdqlE8Fsjdc3lUEh9HXORCAqDBHy-ekhj1bpYOEpRHQFJXg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzODg4ODA5fQ.6aa6cLtzv0oxSRgtfhMNtcUpX7PIQ18nFgNOVi5V_WhrUUlT8JlKX_ZI-NScf3_aFVxZVqkWUMIq_j_XMmKjBg
 
 ### 회원정보찾기 테스트 -서버
 
