@@ -11,6 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
@@ -29,6 +30,8 @@ class AuthServiceTest {
     TokenProvider tokenProvider;
     @Autowired
     RedisTemplate<String, String> redisTemplate;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @DisplayName("구글가입이후로그인")
     @Test
@@ -74,5 +77,17 @@ class AuthServiceTest {
         Authentication authentication = tokenProvider.getAuthentication(token);
 
         assertThat(authentication.getName()).isEqualTo(loginDto.getEmail());
+    }
+
+    @Test
+    void passwordtest() {
+//        System.out.println(passwordEncoder.encode("12345678a!"));
+        LoginDto loginDto = new LoginDto();
+        loginDto.setEmail("test123@gmail.com");
+        loginDto.setPassword("12345678a!");
+        String token = authService.login(loginDto);
+        System.out.println("token=================> "+ token);
+
+
     }
 }
