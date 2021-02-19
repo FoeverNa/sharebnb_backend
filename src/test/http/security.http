@@ -25,19 +25,19 @@ POST http://3.34.122.155/api/login
 Content-Type: application/json
 
 {
-  "email":"member@mail.com",
-  "password":"member33!@"
+  "email":"test123@gmail.com",
+  "password":"12345678a!"
 }
 
 
 
 ### 로그아웃 테스트
 GET http://localhost:8080/api/logout
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNjcxOTQ0fQ.m7UHeLgDIhOV9zdgI_bpCeeZEykxKct19TIWa3K8TfnpPqTIH86IgVdLnByNa2vM1keszTtdfMq3MeqQYWfLlg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNzQ5NDU4fQ._pvzJif01xSqtjBPjduJNzL71cH6KLWpdMun7cjbjaD-6E-XQgldeh40T9RgXXFyhHfH9wurwx8PvCedYOIuGA
 
 ### 로그아웃 테스트 - 서버
 GET http://3.34.122.155/api/logout
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzODkwNjIyfQ.rhVQzvhLZgAJeDe2ahvEREGY1GeaLO6bh5iGitZUcQ3PpUD-ZInvQZzNPonk_RaUFQvr7wiQpToUryMMwL4Adw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MTIzQGdtYWlsLmNvbSIsImF1dGgiOiJST0xFX01FTUJFUiIsIm1lbWJlcklkIjoxLCJleHAiOjE2MTM1MzM0MDZ9.XmI9Vmfvc4FnH3Jv0pHgdZo6EG5d3ZPWpczWILksXTmmMjBmz8jSpI2UVcNQqWSXEkD_-17AnFc_yj-IqP-sww
 
 ### 회원가입 테스트
 
@@ -46,60 +46,50 @@ POST http://localhost:8080/api/member
 Content-Type: application/json
 
 {
-  "email":"member1@mail.com",
+  "email":"member4@mail.com",
   "password":"member33!@",
+  "passwordConfirm":"member33!@",
   "name":"한글",
   "birthDate": "2002-02-10",
   "contact":"01008551213"
-}
-
-### 회원가입 테스트 - 서버
-
-POST http://3.34.122.155/api/member
-Content-Type: application/json
-
-{
-  "email":"member2@mail.com",
-  "password":"member33!@",
-  "name":"한글",
-  "birthDate": "2002-02-10",
-  "contact":"01008551213"
-}
-
-###
-POST http://3.34.50.91/api/login
-Content-Type: application/json
-
-{
-"email":"test123@gmail.com",
-"password":"12345678a!"
 }
 
 ### 회원정보찾기 테스트
 
-GET http://3.34.50.91/api/member
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MTIzQGdtYWlsLmNvbSIsImF1dGgiOiJST0xFX01FTUJFUiIsIm1lbWJlcklkIjoxLCJleHAiOjE2MTM3MjUzNDZ9.bjObpvehtBzXcUupeR8kJeJam6jwlD2lZSKyIyOm1MHBL5Tij6waLTFlAaNxqyfmR5w8OMZHS96-uoAixJyOAA
+GET http://localhost:8080/api/member
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNzQ5NDU4fQ._pvzJif01xSqtjBPjduJNzL71cH6KLWpdMun7cjbjaD-6E-XQgldeh40T9RgXXFyhHfH9wurwx8PvCedYOIuGA
 
 ### 회원정보찾기 테스트 -서버
 
-GET http://3.34.122.155/api/member
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzODkwNjYwfQ.NTWKENjERmnDgu-K8eh46koOjyJQnnIiiTHvrmEJtRqGdOTZHHPnVpJIvRnBchuT1zm1MS0OUKcN7yAgk6_p-w
+GET http://3.34.122.155/api/member/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MTIzQGdtYWlsLmNvbSIsImF1dGgiOiJST0xFX01FTUJFUiIsIm1lbWJlcklkIjoxLCJleHAiOjE2MTM1MzM0MDZ9.XmI9Vmfvc4FnH3Jv0pHgdZo6EG5d3ZPWpczWILksXTmmMjBmz8jSpI2UVcNQqWSXEkD_-17AnFc_yj-IqP-sww
+
+
 
 ### 회원정보수정 : 비밀번호변경
 
 PUT http://localhost:8080/api/member
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNTgwMDY1fQ.q6zut4omnOUtOm7RYMZOcReD_wB8ULG7LEvPxARCo6wiqJvZhgm3rWy37os-lUaTWr4O0LIeRJ9stefYXe9Gwg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzODgwNDk0fQ.MRQls_oiIS1VKtvOwSrF_TAsriHpd09pfgnFSn6CvYoxEaaUFpAHs2QNVIdf4uC8xrV_PXgSDRUpYwtgcam4Bw
 Content-Type: application/json
 
 {
-  "prePassword":"member33!@",
   "password": "member33!@@"
+}
+
+### 회원정보수정 : 생년월일변경
+
+PUT http://localhost:8080/api/member
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzODgwNDk0fQ.MRQls_oiIS1VKtvOwSrF_TAsriHpd09pfgnFSn6CvYoxEaaUFpAHs2QNVIdf4uC8xrV_PXgSDRUpYwtgcam4Bw
+Content-Type: application/json
+
+{
+"birthDate": "1988-02-22"
 }
 
 ### 회원삭제 테스트
 
-DELETE http://localhost:8080/api/member/1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXJAbWFpbC5jb20iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJtZW1iZXJJZCI6NywiZXhwIjoxNjEzNTQyMzEyfQ.AiJMgt4jXbX4wnD78avHe16kYu8fS9J81uaWSR2ahoexi5LW8toznmKC9BUb7TrV4HdtFHKka9-snpgB-yPBGA
+DELETE http://localhost:8080/api/member
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZW1iZXIxQG1haWwuY29tIiwiYXV0aCI6IlJPTEVfTUVNQkVSIiwibWVtYmVySWQiOjExLCJleHAiOjE2MTM4ODA2OTF9.MVnLS2vQf_LUB-rky4qzP82ZkONEoVk8bK8Ea4_98Rx9T-DmVOwoxUKMnnI07_S8vgsY3rLinh0XN9GQpznYVg
 
 ### 구글로그인
 
@@ -116,16 +106,14 @@ Content-Type: application/json
 }
 
 ### 회원가입 후 로그인
-POST http://3.34.122.155/api/login/google
+POST http://localhost:8080/api/login/google
 Content-Type: application/json
 
 {
-  "email":"gg2922914@gmail.com",
-  "socialId":"116185624726222825285",
-  "name":"한글",
+  "email":"fovena@gmail.com",
+  "socialId":"1234124123",
+  "name":"name",
   "birthDate": "2020-02-03",
-  "contact":"01099085511"
+  "contact":"010-9908-5511"
 }
 
-### 구글로그인
-GET http://3.34.122.155/api/login/google?code=4%2F0AY0e-g4-Yd4BWQqaWF9WlGVm8fmCAfvxh32f9yxeDlP9pakQZSr2Yn_nxzzLnVQX-lYKYQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.file&authuser=0&prompt=none
