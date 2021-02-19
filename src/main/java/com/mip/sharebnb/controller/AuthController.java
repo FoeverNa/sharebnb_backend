@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mip.sharebnb.dto.*;
 import com.mip.sharebnb.security.jwt.JwtFilter;
 import com.mip.sharebnb.service.AuthService;
+import com.mip.sharebnb.service.BookmarkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 
-//@CrossOrigin(exposedHeaders = "Authorization")
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor

@@ -2,8 +2,7 @@ package com.mip.sharebnb.controller;
 
 import com.mip.sharebnb.dto.MemberDto;
 import com.mip.sharebnb.model.Member;
-import com.mip.sharebnb.security.jwt.JwtFilter;
-import com.mip.sharebnb.service.AuthService;
+import com.mip.sharebnb.security.jwt.TokenProvider;
 import com.mip.sharebnb.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.eclipse.jdt.core.compiler.InvalidInputException;
@@ -19,13 +18,14 @@ import javax.validation.Valid;
 public class MemberController {
 
     private final MemberService memberService;
-    private final AuthService authService;
+
+    private final TokenProvider tokenProvider;
 
     @GetMapping("/member")
     @PreAuthorize("authenticated")
-    public ResponseEntity<MemberDto> getMember() { ;
+    public ResponseEntity<MemberDto> getMember(@RequestHeader("Authorization") String token) {
 
-        Member member = memberService.getMember(JwtFilter.MEMBER_ID);
+        Member member = memberService.getMember(tokenProvider.parseTokenToGetUserId(token));
 
         return ResponseEntity.ok(mapToMemberDto(member));
     }
