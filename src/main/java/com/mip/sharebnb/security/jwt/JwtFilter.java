@@ -22,6 +22,8 @@ public class JwtFilter extends GenericFilterBean {
 
     public static final String HEADER_PREFIX = "Bearer ";
 
+    public static Long MEMBER_ID ;
+
     private TokenProvider tokenProvider;
 
     public JwtFilter(TokenProvider tokenProvider) {
@@ -38,6 +40,7 @@ public class JwtFilter extends GenericFilterBean {
         if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            MEMBER_ID = tokenProvider.parseTokenToGetUserId(jwt);
             logger.debug("Security Context에 '{}' 인증 정보를 저장했습니다, uri: {}", authentication.getName(), requestURI);
         } else {
             logger.debug("유요한 JWT 토큰이 없습니다, uri: {}", requestURI);

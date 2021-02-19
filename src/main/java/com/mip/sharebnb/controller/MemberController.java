@@ -2,6 +2,7 @@ package com.mip.sharebnb.controller;
 
 import com.mip.sharebnb.dto.MemberDto;
 import com.mip.sharebnb.model.Member;
+import com.mip.sharebnb.security.jwt.JwtFilter;
 import com.mip.sharebnb.service.AuthService;
 import com.mip.sharebnb.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -10,10 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-//@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -22,11 +21,11 @@ public class MemberController {
     private final MemberService memberService;
     private final AuthService authService;
 
-    @GetMapping("/member/{member_id}")
+    @GetMapping("/member")
     @PreAuthorize("authenticated")
-    public ResponseEntity<MemberDto> getMember(@PathVariable Long member_id) {
+    public ResponseEntity<MemberDto> getMember() { ;
 
-        Member member = memberService.getMember(member_id);
+        Member member = memberService.getMember(JwtFilter.MEMBER_ID);
 
         return ResponseEntity.ok(mapToMemberDto(member));
     }
