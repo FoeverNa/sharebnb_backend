@@ -2,6 +2,8 @@ package com.sweetypie.sweetypie.service;
 
 import com.sweetypie.sweetypie.dto.GoogleMemberDto;
 import com.sweetypie.sweetypie.dto.LoginDto;
+import com.sweetypie.sweetypie.model.Member;
+import com.sweetypie.sweetypie.repository.MemberRepository;
 import com.sweetypie.sweetypie.security.jwt.TokenProvider;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -54,10 +56,7 @@ class AuthServiceTest {
     @Test
     void logoutTest() {
         String token = "ThisIsTestToken1234";
-        MockHttpServletRequest request = new MockHttpServletRequest();
-        request.addHeader("Authorization", token);
-
-        authService.logout(request);
+        authService.logout(token);
 
         ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
         String result = valueOperations.get(token);
@@ -65,6 +64,7 @@ class AuthServiceTest {
         assertThat(result).isEqualTo(token);
     }
 
+    @DisplayName("로그인테스트")
     @Test
     void loginServiceTest() {
 
