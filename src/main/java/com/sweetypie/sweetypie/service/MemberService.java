@@ -1,6 +1,5 @@
 package com.sweetypie.sweetypie.service;
 
-import com.sweetypie.sweetypie.dto.ErrorDto;
 import com.sweetypie.sweetypie.dto.GoogleMemberDto;
 import com.sweetypie.sweetypie.dto.MemberDto;
 import com.sweetypie.sweetypie.exception.DataNotFoundException;
@@ -10,8 +9,6 @@ import com.sweetypie.sweetypie.model.Member;
 import com.sweetypie.sweetypie.model.MemberRole;
 import com.sweetypie.sweetypie.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,26 +60,23 @@ public class MemberService {
                 .orElseThrow(() -> new DataNotFoundException("조회하는 멤버가 존재하지 않습니다"));
     }
 
-    public Member updateMember(Long id, MemberDto memberDto)  {
+    public void updateMember(Long id, MemberDto memberDto)  {
 
         Member member = memberRepository
                 .findById(id)
                 .orElseThrow(() -> new DataNotFoundException("수정할 멤버가 존재하지 않습니다"));
 
-        if (memberDto.getName() != null) {
             member.setName(memberDto.getName());
-        } else if (memberDto.getBirthDate() != null) {
             member.setBirthDate(memberDto.getBirthDate());
-        } else if (memberDto.getContact() != null) {
             member.setContact(memberDto.getContact());
-        } else if (memberDto.getPassword() != null) {
+
+        if (memberDto.getPassword() != null) {
 //            if (!passwordEncoder.matches(memberDto.getPrePassword(), member.getPassword())) {
 //                throw new InputNotValidException("이전 비밀번호가 일치하지 않습니다");
 //            } // 추후 구현
             member.setPassword(passwordEncoder.encode(memberDto.getPassword()));
         }
-
-        return memberRepository.save(member);
+            memberRepository.save(member);
     }
 
     public Member withdrawal(Long id) {

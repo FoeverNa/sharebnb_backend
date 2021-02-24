@@ -126,30 +126,63 @@ class MemberControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
-    @DisplayName("회원정보수정-password")
+    @DisplayName("회원정보수정-성공-password")
     @Test
     void updateMemberPasswordTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.put("/api/member")
                 .header("Authorization", token)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(
-                        "{ \"password\":\"password123!12\"}"
+                        "{       \"name\":\"테스터\", " +
+                                "\"birthDate\":\"1999-09-11\", " +
+                                "\"contact\":\"01022223333\", " +
+                                "\"password\":\"updatePassword123!\" }"
                 ))
                 .andExpect(status().isOk());
     }
 
-    @DisplayName("회원정보수정-birthDate")
+    @DisplayName("회원정보수정-성공-name")
     @Test
-    void updateMemberBirthDate() throws Exception {
+    void updateMemberNameTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.put("/api/member")
                 .header("Authorization", token)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(
                         objectMapper.writeValueAsString(
-                                MemberDto.builder()
-                                        .birthDate(LocalDate.of(1987,12,20))
-                                        .build()
+                        MemberDto.builder()
+                        .name("수정된테스터")
+                        .birthDate(LocalDate.of(1999,9,11))
+                        .contact("01022223333")
+                        .build()
                         )
+                ))
+                .andExpect(status().isOk());
+    }
+
+    @DisplayName("회원정보수정-성공-contact")
+    @Test
+    void updateMemberContactTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/member")
+                .header("Authorization", token)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(
+                        "{       \"name\":\"테스터\", " +
+                                "\"birthDate\":\"1999-09-11\", " +
+                                "\"contact\":\"01099998888\" }"
+                ))
+                .andExpect(status().isOk());
+    }
+
+    @DisplayName("회원정보수정-성공-birthDate")
+    @Test
+    void updateMemberBirthDateTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/member")
+                .header("Authorization", token)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(
+                        "{       \"name\":\"테스터\", " +
+                                "\"birthDate\":\"1999-01-01\", " +
+                                "\"contact\":\"01022223333\" }"
                 ))
                 .andExpect(status().isOk());
     }
@@ -159,8 +192,7 @@ class MemberControllerTest {
     void withdrawalTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/member")
                 .header("Authorization", token))
-                .andExpect(status().isOk())
-                .andExpect(content().string("회원 탈퇴가 정상적으로 완료되었습니다"));
+                .andExpect(status().isOk());
     }
 
 
