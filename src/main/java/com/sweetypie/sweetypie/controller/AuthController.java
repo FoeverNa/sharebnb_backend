@@ -27,7 +27,7 @@ public class AuthController {
         return ResponseEntity.ok(new TokenDto(token));
     }
 
-    @GetMapping("/login/google")
+    @GetMapping("/login/google/oauth2callback")
     public ResponseEntity<Map<String, String>> googleLogin(@RequestParam(value = "code") String authCode) throws JsonProcessingException {
 
         Map<String, String> map;
