@@ -43,7 +43,7 @@ public class AuthService {
     private final RedisTemplate<String, String> redisTemplate;
 
     final static String GOOGLE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/token";
-    final static String GOOGLE_REDIRECT_URL = "http://localhost:3000/redirect";
+    final static String GOOGLE_REDIRECT_URL = "http://ec2-3-34-122-155.ap-northeast-2.compute.amazonaws.com/api/login/google";
     final static String GOOGLE_REVOKE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/revoke";
 
     @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds;
