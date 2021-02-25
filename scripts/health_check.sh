@@ -20,7 +20,7 @@ fi
 echo "> Start health check of WAS at 'http://127.0.0.1:${TARGET_PORT}' ..."
 #CURRENT_PID=$(lsof -Fp -i TCP:${CURRENT_PORT} | grep -Po 'p[0-9]+' | grep -Po '[0-9]+')
 
-for RETRY_COUNT in 1 2 3 4 5 6 7 8 9 10
+for RETRY_COUNT in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 do
   echo "> #${RETRY_COUNT} trying..."
   RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:${TARGET_PORT})
