@@ -80,7 +80,7 @@ public class AuthService {
 
         Map<String, String> googleUserInfo = getGoogleUserInfo(authCode);
 
-        GoogleMemberDto memberDto = pareUserInfoToGoogleMemberDto(googleUserInfo);
+        GoogleMemberDto memberDto = parseUserInfoToGoogleMemberDto(googleUserInfo);
 
         // 로그인이 가능할 때 로그인을 해서 JWT 토큰을 리턴한다
         if (isLoginPossible(memberDto, googleUserInfo)) {
@@ -127,11 +127,11 @@ public class AuthService {
 
         GoogleTokenResponseDto googleResponse = getGoogleResponse(restTemplate, mapper, authCode);
 
-        return getGetUserInfoFromGoogleResponse(restTemplate, mapper, googleResponse);
+        return getUserInfoFromGoogleResponse(restTemplate, mapper, googleResponse);
 
     }
 
-    private Map<String, String> getGetUserInfoFromGoogleResponse(RestTemplate restTemplate, ObjectMapper mapper, GoogleTokenResponseDto googleResponse) throws JsonProcessingException {
+    private Map<String, String> getUserInfoFromGoogleResponse(RestTemplate restTemplate, ObjectMapper mapper, GoogleTokenResponseDto googleResponse) throws JsonProcessingException {
         //ID Token만 추출 (사용자의 정보는 jwt로 인코딩 되어있다)
         String jwtToken = googleResponse.getIdToken();
         String requestUrl = UriComponentsBuilder.fromHttpUrl("https://oauth2.googleapis.com/tokeninfo")
@@ -162,7 +162,7 @@ public class AuthService {
         return  mapper.readValue(resultEntity.getBody(), new TypeReference<GoogleTokenResponseDto>() {});
     }
 
-    private GoogleMemberDto pareUserInfoToGoogleMemberDto (Map<String, String> userInfo) {
+    private GoogleMemberDto parseUserInfoToGoogleMemberDto(Map<String, String> userInfo) {
 
         return  GoogleMemberDto.builder()
                 .email(userInfo.get("email"))
